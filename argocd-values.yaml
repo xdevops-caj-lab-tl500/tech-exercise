@@ -1,0 +1,15 @@
+ignoreHelmHooks: true
+operator: []
+namespaces:
+  - will-ci-cd
+argocd_cr:
+  initialRepositories: |
+    - url: https://gitlab-ce.apps.cluster-ndfxh.ndfxh.sandbox1204.opentlc.com/will/tech-exercise.git
+      type: git
+      passwordSecret:
+        key: password
+        name: git-auth
+      usernameSecret:
+        key: username
+        name: git-auth
+      insecure: true
