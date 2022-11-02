@@ -65,6 +65,8 @@ applications:
             value: "true"
           - name: JAVA_ARGS
             value: '-Dorg.jenkinsci.plugins.gitclient.GitClient.untrustedSSL=true'
+          - name: Hello
+            value: 'World'
       persistence: false
       source_secrets:
         - name: nexus-password
