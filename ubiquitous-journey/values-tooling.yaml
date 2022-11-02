@@ -87,6 +87,24 @@ applications:
 
 
   # Sealed Secrets
+  - name: sealed-secrets
+    enabled: true
+    source: https://redhat-cop.github.io/helm-charts
+    chart_name: helper-sealed-secrets
+    source_ref: "1.0.3"
+    values:
+      secrets:
+        # Additional secrets will be added to this list along the exercises.
+        - name: git-auth
+          type: kubernetes.io/basic-auth
+          annotations:
+            tekton.dev/git-0: https://gitlab-ce.apps.cluster-ndfxh.ndfxh.sandbox1204.opentlc.com
+          labels:
+            credential.sync.jenkins.openshift.io: "true"
+          data:
+            username: AgAkaj0v50rlBmAWLkQwho1DWLd+9yPnurfk+o4llaXdXD8an+rnLRrfg+6js3LGRZH9l7RKqHY+vs34xyYGAaCtVAgjgKeNg9m2q4lENMtBwz9O0uLxnURjdBm1tAOkcpY+XUPTa3I5J2qkYfTyu+lJUnaTPfB1jF28yIng3vXs+FK8v7kXH1a7JnBFHbpfnNlKvNjyvDV7IK0g0iokDyjLyK4zfiFENGrliIxGT6iCu4JlxIo3WCEFS1CHK4ah/mNANcOggUiUYiPKlXqnsgMfEq0g+yKY6vWZH9NPPCACYg9tpAo8u8bZxStHu2S/VuhK3134ynho/cWZ7m3+ciOhbb66b8AY56yqzKwUzJ4LkTMYBTcwi9/nfMpFB/ckdisDTqKN9OTxSMLOsl6WM9bYUzSfMUZi8/NbSD84+kEuHl95hjkKPdwiLyvOOgeoNU1ZtFd3ecM5e0bVlgDWgI2WTBM9KlyQr32UX61iMYRPj4EWdm8M8qY+DT0Qt7fssNa3JF6kXNJKkd7yAdVV7lPOixSDUacfHKHv9oMVxyTjDSEQgXv/Blc3nT59YIsCKllJGxpXZ/PK0Znzm1kCXhXD0WIhWAhsEgPwG9gvdgxQK3DiZUmCNrE7XD8rq9gFzBaLj2h1n2FKBFJoS00Am4uWwiri5R4I3c3YK4TW+LEfAQ0rYWyjE2mYcGg/USu5Wm8V9L17gdMTPBPCqlmRBy8oj2dTYQ==
+            password: AgBY3H7kU0/KtohcqpKu6E3tltY1Gs8f8lgagh5KRBIOD50MhTak2h5q3OnHQyK5pHrXy6bCtAgkLO1IHEDQaJ6i6fQn6NxaErW69BirOQFx14OHIK4dhRi8lfvxaR3VLe0v9NA1kSj9tQ1lyrWHtgh5MNJifpuC63dg2TT3M3JrxTIFwiUDcygkgiC+64fcAaJeem682/jr8md4MJC/yrB3DSFYiCwnVN3P/zu4q2LoQdqnEXdZIWsiHBjuGbY1ZyhbjcFeiLuk2yi0EJabc7/I0X+oilfAoE4+Oo0pBELRY0kfLV61S6O8cVwgdtnXBulmt15u7ftYPpvvzIMoB/q5bg2zgo/jLqFTjibuLN3Nu7wDeMYzD0599jxyURtRwgwKvT3xmKJBChLTQFhV+BLkx1E0fbWzZkjgWT6QSDQEEx7y2Kpl47L6qP99I6/bNKYY4DzFcUBZRpgubnGKBeNOmhQ6FDKYawjDiEmeUSQrxKBp2t5pC73+o10iazb5u8w8A1xCfujggHxmXV8wYUCKBBuYUnja/x7RYlddEplvKNKrAMMtGqr7YcRLFkEIu3JjrSeL55cNWQ3PC+rtjdKrI77lK+1SwFqYEkCLzUjrcCy9Sg0ui5+hah8R/p+25mZOfBCrN3A1hEMCoEUnOsQH1mgtewnAzuyiN8Ukko+Gq+qxQB5z/3WIKTORgumIlfy8GMxxuQ==
+
 
 
   # Tekton Pipelines
