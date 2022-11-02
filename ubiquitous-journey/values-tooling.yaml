@@ -15,18 +15,18 @@ applications:
         - name: jenkins
           kind: ServiceAccount
           role: admin
-          namespace: TEAM_NAME-ci-cd
+          namespace: will-ci-cd
       namespaces:
-        - name: TEAM_NAME-ci-cd
+        - name: will-ci-cd
           bindings: *binds
           operatorgroup: true
-        - name: TEAM_NAME-dev
+        - name: will-dev
           bindings: *binds
           operatorgroup: true
-        - name: TEAM_NAME-test
+        - name: will-test
           bindings: *binds
           operatorgroup: true
-        - name: TEAM_NAME-stage
+        - name: will-stage
           bindings: *binds
           operatorgroup: true
 
