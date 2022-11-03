@@ -19,12 +19,14 @@ applications:
     enabled: true
     source: http://nexus:8081/repository/helm-charts
     chart_name: pet-battle-api
-    source_ref: 1.2.1 # helm chart version
+    source_ref: 1.3.1 # helm chart version
     values:
       image_name: pet-battle-api
-      image_version: latest # container image version
+      image_version: 1.3.1 # container image version
       hpa:
         enabled: false
+      image_repository: image-registry.openshift-image-registry.svc:5000
+      image_namespace: will-test
   pet-battle:
     name: pet-battle
     enabled: true
