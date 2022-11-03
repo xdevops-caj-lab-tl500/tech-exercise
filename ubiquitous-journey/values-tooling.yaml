@@ -58,9 +58,9 @@ applications:
           - name: GITLAB_DEFAULT_BRANCH
             value: 'main'
           - name: GITLAB_HOST
-            value: ''
+            value: 'gitlab-ce.apps.cluster-ndfxh.ndfxh.sandbox1204.opentlc.com'
           - name: GITLAB_GROUP_NAME
-            value: ''
+            value: 'will'
           - name: GIT_SSL_NO_VERIFY
             value: "true"
           - name: JAVA_ARGS

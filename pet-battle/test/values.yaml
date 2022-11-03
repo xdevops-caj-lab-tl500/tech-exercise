@@ -28,7 +28,7 @@ applications:
   pet-battle:
     name: pet-battle
     enabled: true
-    source: https://petbattle.github.io/helm-charts # http://nexus:8081/repository/helm-charts 
+    source: http://nexus:8081/repository/helm-charts 
     chart_name: pet-battle
     source_ref: 1.0.6 # helm chart version
     values:
