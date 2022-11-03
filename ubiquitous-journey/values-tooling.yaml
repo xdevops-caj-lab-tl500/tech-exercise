@@ -109,6 +109,16 @@ applications:
 
 
   # Tekton Pipelines
+  - name: tekton-pipeline
+    enabled: true
+    source: "https://gitlab-ce.apps.cluster-ndfxh.ndfxh.sandbox1204.opentlc.com/will/tech-exercise.git"
+    source_ref: main
+    source_path: tekton
+    values:
+      team: will
+      cluster_domain: apps.cluster-ndfxh.ndfxh.sandbox1204.opentlc.com
+      git_server: gitlab-ce.apps.cluster-ndfxh.ndfxh.sandbox1204.opentlc.com
+
 
 
   # Sonarqube
