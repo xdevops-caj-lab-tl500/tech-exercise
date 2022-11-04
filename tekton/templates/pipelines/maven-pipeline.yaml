@@ -139,7 +139,7 @@ spec:
         - name: default_option
           value: do-not-auto-add-defaults
         - name: includelist
-          value: "no-extensions-v1beta,no-readiness-probe,no-liveness-probe,dangling-service,mismatching-selector,writable-host-mount"
+          value: "no-extensions-v1beta,no-readiness-probe,no-liveness-probe,dangling-service,mismatching-selector,writable-host-mount,required-label-owner"
 
 
     - name: maven
