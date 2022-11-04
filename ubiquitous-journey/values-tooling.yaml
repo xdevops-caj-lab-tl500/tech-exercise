@@ -53,6 +53,7 @@ applications:
         - name: jenkins-agent-mvn
         - name: jenkins-agent-helm
         - name: jenkins-agent-argocd
+        - name: jenkins-agent-zap
       deployment:
         env_vars:
           - name: GITLAB_DEFAULT_BRANCH
