@@ -92,6 +92,20 @@ spec:
 
 
     # Save Test Results
+    - name: save-test-results
+      taskRef:
+        name: allure-post-report
+      params:
+        - name: APPLICATION_NAME
+          value: "$(params.APPLICATION_NAME)"
+        - name: WORK_DIRECTORY
+          value: "$(params.APPLICATION_NAME)/$(params.GIT_BRANCH)"
+      runAfter:
+        - maven
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+
 
     # Code Analysis Check
     - name: analysis-check
