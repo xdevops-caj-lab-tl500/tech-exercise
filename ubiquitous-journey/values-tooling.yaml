@@ -54,6 +54,7 @@ applications:
         - name: jenkins-agent-helm
         - name: jenkins-agent-argocd
         - name: jenkins-agent-zap
+        - name: jenkins-agent-cosign
       deployment:
         env_vars:
           - name: GITLAB_DEFAULT_BRANCH
