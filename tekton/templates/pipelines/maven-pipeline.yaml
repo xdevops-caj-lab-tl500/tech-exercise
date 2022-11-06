@@ -183,21 +183,21 @@ spec:
         - maven
 
     # Image Scan
-    - name: image-scan
-      runAfter:
-      - bake
-      taskRef:
-        name: rox-image-scan
-      workspaces:
-        - name: output
-          workspace: shared-workspace
-      params:
-        - name: IMAGE
-          value: "$(tasks.bake.results.IMAGE)"
-        - name: WORK_DIRECTORY
-          value: "$(params.APPLICATION_NAME)/$(params.GIT_BRANCH)"
-        - name: OUTPUT_FORMAT
-          value: table
+    # - name: image-scan
+    #   runAfter:
+    #   - bake
+    #   taskRef:
+    #     name: rox-image-scan
+    #   workspaces:
+    #     - name: output
+    #       workspace: shared-workspace
+    #   params:
+    #     - name: IMAGE
+    #       value: "$(tasks.bake.results.IMAGE)"
+    #     - name: WORK_DIRECTORY
+    #       value: "$(params.APPLICATION_NAME)/$(params.GIT_BRANCH)"
+    #     - name: OUTPUT_FORMAT
+    #       value: table
 
 
     - name: helm-package
