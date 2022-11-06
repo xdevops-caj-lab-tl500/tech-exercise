@@ -320,6 +320,22 @@ spec:
 
 
     # Load Testing
+    - name: load-testing
+      runAfter:
+        - verify-deployment
+      taskRef:
+        name: load-testing
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+      params:
+        - name: APPLICATION_NAME
+          value: "$(params.APPLICATION_NAME)"
+        - name: TEAM_NAME
+          value: "$(params.TEAM_NAME)"
+        - name: WORK_DIRECTORY
+          value: "$(params.APPLICATION_NAME)/$(params.GIT_BRANCH)"
+
 
   results:
     - name: VERSION

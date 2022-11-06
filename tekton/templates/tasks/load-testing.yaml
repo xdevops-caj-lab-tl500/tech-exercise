@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: load-testing
+spec:
+  workspaces:
+    - name: output
+  params:
+    - name: APPLICATION_NAME
+      description: Name of the application
+      type: string
+    - name: TEAM_NAME
+      description: Name of the team that doing this exercise :)
+      type: string
+    - name: WORK_DIRECTORY
+      description: Directory to start build in (handle multiple branches)
+      type: string
+  steps:
+    - name: load-testing
+      image: quay.io/centos7/python-38-centos7:latest
+      workingDir: $(workspaces.output.path)/$(params.WORK_DIRECTORY)
+      script: |
+        #!/usr/bin/env bash
+        pip3 install locust
+        locust --headless --users 10 --spawn-rate 1 -H https://$(params.APPLICATION_NAME)-$(params.TEAM_NAME)-test.{{ .Values.cluster_domain }} --run-time 1m --loglevel INFO --only-summary 
