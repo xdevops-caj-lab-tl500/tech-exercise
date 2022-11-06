@@ -41,3 +41,31 @@ spec:
         curl -k -L -H "Authorization: Bearer $ROX_API_TOKEN" https://$ROX_ENDPOINT/api/cli/download/roxctl-linux --output roxctl  > /dev/null; echo "Getting roxctl"
         chmod +x roxctl > /dev/null
         ./roxctl image scan --insecure-skip-tls-verify -e $ROX_ENDPOINT:443 --image $(params.IMAGE) -o $(params.OUTPUT_FORMAT)
+    - name: rox-image-check
+      image: registry.access.redhat.com/ubi8/ubi-minimal:latest
+      workingDir: $(workspaces.output.path)/$(params.WORK_DIRECTORY)
+      env:
+        - name: ROX_API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: $(params.ROX_SECRET)
+              key: password
+        - name: ROX_ENDPOINT
+          valueFrom:
+            secretKeyRef:
+              name: $(params.ROX_SECRET)
+              key: username
+      script: |
+        #!/usr/bin/env bash
+        set +x
+        export NO_COLOR="True"
+        curl -k -L -H "Authorization: Bearer $ROX_API_TOKEN" https://$ROX_ENDPOINT/api/cli/download/roxctl-linux --output roxctl  > /dev/null;echo "Getting roxctl"
+        chmod +x roxctl > /dev/null
+        ./roxctl image check --insecure-skip-tls-verify -e $ROX_ENDPOINT:443 --image $(params.IMAGE) -o json
+        if [ $? -eq 0 ]; then
+          echo "🦕 no issues found 🦕";
+          exit 0;
+        else
+          echo "🛑 image checks failed 🛑";
+          exit 1;
+        fi
